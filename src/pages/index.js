@@ -1,0 +1,7 @@
+export * from './register.page'
+export * from './main.page'
+export * from './settings.page'
+export * from './editArticle.page'
+export * from './profile.page'
+export * from './article.page'
+export * from './addArticle.page'
