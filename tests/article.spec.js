@@ -61,16 +61,14 @@ test.describe('Статьи пользователя', () => {
 
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
-        const addArticlePage = new ArticlePage(page);
         const articlePage = new ArticlePage(page);
-        const editArticlePage = new ArticlePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
         await mainPage.gotoArticle();
-        await addArticlePage.addArticle(article);
+        await articlePage.addArticle(article);
         await articlePage.gotoeditArticleLink();
-        await editArticlePage.editArticle(article);
+        await articlePage.editArticle(article);
         
         await expect (articlePage.articleTitle).toContainText(article.title);
         await expect (articlePage.articleAuthor).toContainText(user.name);
@@ -104,13 +102,12 @@ test.describe('Статьи пользователя', () => {
 
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
-        const addArticlePage = new ArticlePage(page);
         const articlePage = new ArticlePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
         await mainPage.gotoArticle();
-        await addArticlePage.addArticle(article);
+        await articlePage.addArticle(article);
         await articlePage.addComment(comment);
 
        
