@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { MainPage, RegisterPage, AddArticlePage, ArticlePage, EditArticlePage  } from '../src/pages/index';
+import { MainPage, RegisterPage, ArticlePage } from '../src/pages/index';
 
 const URL = 'https://realworld.qa.guru/';
 
@@ -26,13 +26,12 @@ test.describe('Статьи пользователя', () => {
 
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
-        const addArticlePage = new AddArticlePage(page);
         const articlePage = new ArticlePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
         await mainPage.gotoArticle();
-        await addArticlePage.addArticle(article);
+        await articlePage.addArticle(article);
         await expect (articlePage.articleTitle).toContainText(article.title);
         await expect (articlePage.articleAuthor).toContainText(user.name);
         await expect (articlePage.articleBody).toContainText(article.body);
@@ -62,16 +61,14 @@ test.describe('Статьи пользователя', () => {
 
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
-        const addArticlePage = new AddArticlePage(page);
         const articlePage = new ArticlePage(page);
-        const editArticlePage = new EditArticlePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
         await mainPage.gotoArticle();
-        await addArticlePage.addArticle(article);
+        await articlePage.addArticle(article);
         await articlePage.gotoeditArticleLink();
-        await editArticlePage.editArticle(article);
+        await articlePage.editArticle(article);
         
         await expect (articlePage.articleTitle).toContainText(article.title);
         await expect (articlePage.articleAuthor).toContainText(user.name);
@@ -105,13 +102,12 @@ test.describe('Статьи пользователя', () => {
 
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
-        const addArticlePage = new AddArticlePage(page);
         const articlePage = new ArticlePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
         await mainPage.gotoArticle();
-        await addArticlePage.addArticle(article);
+        await articlePage.addArticle(article);
         await articlePage.addComment(comment);
 
        

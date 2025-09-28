@@ -8,7 +8,17 @@ export class ArticlePage {
        this.commentInput = page.getByRole('textbox', {name: 'Write a comment...' });
        this.postCommentButton = page.getByRole('button', {name: 'Post Comment'})
        this.commentAuthor = page.locator('.comment-author').nth(1);
-   }
+       this.titleInput = page.getByRole('textbox', { name: 'title' });
+       this.descriptionInput = page.getByRole('textbox', { name: 'What\'s this article about?' });
+       this.bodyInput = page.getByRole('textbox', {name: 'Write your article (in markdown)'});
+       this.tagsInput = page.getByRole('textbox', {name: 'Enter tags' });
+       this.publishButton = page.getByRole('button', {name: 'Publish Article'});
+       this.titleInput = page.getByRole('textbox', { name: 'title' });
+       this.descriptionInput = page.getByRole('textbox', { name: 'What\'s this article about?' });
+       this.bodyInput = page.getByRole('textbox', {name: 'Write your article (in markdown)'});
+       this.tagsInput = page.getByRole('textbox', {name: 'Enter tags' });
+       this.updateButton = page.getByRole('button', {name: 'Update Article'})
+    }
     async addComment(comment) {
     const { text } = comment;
      await this.commentInput.click();
@@ -18,16 +28,6 @@ export class ArticlePage {
     async gotoeditArticleLink() {
       await this.editArticleLink.click();
     }
-}
-
-export class AddArticlePage {
-   constructor (page) {
-       this.titleInput = page.getByRole('textbox', { name: 'title' });
-       this.descriptionInput = page.getByRole('textbox', { name: 'What\'s this article about?' });
-       this.bodyInput = page.getByRole('textbox', {name: 'Write your article (in markdown)'});
-       this.tagsInput = page.getByRole('textbox', {name: 'Enter tags' });
-       this.publishButton = page.getByRole('button', {name: 'Publish Article'})
-   }
     async addArticle(article) {
     const {title, description, body, tags} = article;
       await this.titleInput.click();
@@ -40,16 +40,6 @@ export class AddArticlePage {
       await this.tagsInput.fill(tags);
       await this.publishButton.click();
     }
-}
-
-export class EditArticlePage {
-   constructor (page) {
-       this.titleInput = page.getByRole('textbox', { name: 'title' });
-       this.descriptionInput = page.getByRole('textbox', { name: 'What\'s this article about?' });
-       this.bodyInput = page.getByRole('textbox', {name: 'Write your article (in markdown)'});
-       this.tagsInput = page.getByRole('textbox', {name: 'Enter tags' });
-       this.publishButton = page.getByRole('button', {name: 'Update Article'})
-   }
     async editArticle(article) {
     const {title, description, body, tags} = article;
       await this.titleInput.click();
@@ -60,6 +50,6 @@ export class EditArticlePage {
       await this.bodyInput.fill(body);
       await this.tagsInput.click();
       await this.tagsInput.fill(tags);
-      await this.publishButton.click();
+      await this.updateButton.click();
     }
 }
