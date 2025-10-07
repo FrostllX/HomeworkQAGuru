@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { MainPage, RegisterPage, ProfilePage, SettingsPage } from '../src/pages/index';
+import { MainPage, ProfilePage, RegisterPage} from '../src/pages/index';
 
 const URL = 'https://realworld.qa.guru/';
 
@@ -54,7 +54,7 @@ test.describe('Профиль пользователя', () => {
         const mainPage = new MainPage(page);
         const registerPage = new RegisterPage(page);
         const profilePage = new ProfilePage(page);
-        const settingsPage = new SettingsPage(page);
+        const settingsPage = new ProfilePage(page);
 
         await mainPage.gotoRegister();
         await registerPage.register(user);
